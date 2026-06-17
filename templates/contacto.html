@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Contacto</title>
+
+    <link rel="stylesheet"
+          th:href="@{/estilos.css}">
+
+</head>
+
+<body class="contact-body">
+
+<nav>
+
+   <div class="logo-tienda">
+
+    <img th:src="@{/imagenes/logo.png}"
+         alt="DIANA'S">
+
+    </div>
+
+    <a th:href="@{/}"
+       class="btn-volver">
+
+        ⬅ Volver
+
+    </a>
+
+</nav>
+
+<div class="contacto-container">
+
+    <h1>Contáctanos</h1>
+
+    <div th:if="${param.enviado}"
+         class="mensaje-exito">
+
+        ✅ Mensaje enviado correctamente
+
+    </div>
+
+    <form th:action="@{/contacto}"
+          method="post">
+
+        <input type="text"
+               name="nombre"
+               placeholder="Nombre"
+               required>
+
+        <input type="email"
+               name="correo"
+               placeholder="Correo"
+               required>
+
+        <input type="text"
+               name="asunto"
+               placeholder="Asunto"
+               required>
+
+        <textarea name="mensaje"
+                  placeholder="Escribe tu mensaje"
+                  required>
+        </textarea>
+
+        <button type="submit">
+
+            Enviar Mensaje
+
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+
+</html>

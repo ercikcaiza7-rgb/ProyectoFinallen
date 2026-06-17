@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Historial de Compras</title>
+
+    <link rel="stylesheet"
+          th:href="@{/estilos.css}">
+
+</head>
+<body class="history-body"></body>
+<body>
+
+<nav>
+
+    <div class="logo-tienda">
+
+    <img th:src="@{/imagenes/logo.png}"
+         alt="DIANA'S">
+
+    </div>
+
+    <a th:href="@{/}"
+       class="btn-volver">
+
+        ⬅ Volver
+
+    </a>
+
+</nav>
+
+<div class="carrito-container">
+
+    <h1>📦 Historial de Compras</h1>
+
+    <table class="tabla-carrito">
+
+        <tr>
+
+            <th>ID Pedido</th>
+
+            <th>Fecha</th>
+
+            <th>Total</th>
+
+            <th>Detalle</th>
+
+        </tr>
+
+        <tr th:each="pedido : ${pedidos}">
+
+    <td th:text="${pedido.id}"></td>
+
+    <td th:text="${pedido.fecha}"></td>
+
+    <td>
+        $ <span th:text="${pedido.total}"></span>
+    </td>
+
+    <td>
+
+        <a th:href="@{/detalle-pedido/{id}(id=${pedido.id})}"
+           class="btn-detalle">
+
+            📄 Ver Factura
+
+        </a>
+
+    </td>
+
+</tr>
+
+        </tr>
+
+    </table>
+
+</div>
+
+</body>
+
+</html>

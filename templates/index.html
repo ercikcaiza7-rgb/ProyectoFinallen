@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<!-- Indica que el documento es HTML5 -->
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tienda DIANA'S</title>
+
+    <link rel="stylesheet" th:href="@{/estilos.css}">
+
+</head>
+
+<body>
+
+<!-- ================= BARRA SUPERIOR ================= -->
+<div class="topbar">
+    Descuentos desde $100
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<nav>
+
+    <div class="logo-tienda">
+
+    <img th:src="@{/imagenes/logo.png}"
+         alt="DIANA'S">
+
+    </div>
+    <div class="nav-links">
+
+        <a th:href="@{/nosotros}">
+            Nosotros
+        </a>
+    </div>
+    <!-- BOTONES LOGIN Y REGISTRO -->
+    <div class="auth-buttons">
+
+         <!-- Si NO hay sesión -->
+    <div th:if="${session.usuario == null}">
+
+        <a th:href="@{/contacto}"
+           class="btn-contacto">
+           Contacto
+        </a>
+
+        <a th:href="@{/login}"
+           class="btn-login">
+            Iniciar Sesión
+        </a>
+
+        <a th:href="@{/registro}"
+           class="btn-registro">
+            Registrarse
+        </a>
+
+    </div>
+
+    <!-- Si SÍ hay sesión -->
+    <div th:if="${session.usuario != null}">
+
+        <span class="usuario-logueado">
+            Hola,
+            <span th:text="${session.usuario.nombre}"></span>
+        </span>
+
+        <a th:href="@{/historial-compras}"
+       class="btn-contacto">
+
+        Mis Compras
+
+    </a>
+
+        <a th:href="@{/logout}"
+           class="btn-login">
+            Cerrar Sesión
+        </a>
+
+    </div>
+
+</div>
+
+</nav>
+
+<!-- ================= BOTÓN CARRITO ================= -->
+<a th:href="@{/carrito}" class="btn-carrito">
+    🛒 Ver Carrito
+</a>
+
+<!-- ================= BANNER ================= -->
+<section class="banner">
+
+    <h2>Elegancia que habla por ti</h2>
+
+    <p>Tu estilo, tu mejor elección</p>
+
+</section>
+
+
+<!-- ================= ENCABEZADO ================= -->
+<header>
+    <!-- ================= CARRUSEL ================= -->
+<section class="carrusel">
+   
+    <img src="/imagenes/carrusel1.png" class="slide activo">
+
+    <img src="/imagenes/carrusel2.png" class="slide">
+
+    <img src="/imagenes/carrusel3.png" class="slide">
+
+</section>
+<!-- ================= TESTIMONIOS ================= -->
+
+<section class="testimonios">
+
+    <h2>Lo que dicen nuestros clientes</h2>
+
+    <div class="contenedor-testimonios">
+
+        <div class="testimonio">
+
+            <div class="estrellas">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <p>
+                "Excelente calidad, los aretes llegaron muy rápido."
+            </p>
+
+            <h4>- María G.</h4>
+
+        </div>
+
+        <div class="testimonio">
+
+            <div class="estrellas">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <p>
+                "Los relojes son elegantes y tienen muy buena presentación."
+            </p>
+
+            <h4>- Carlos M.</h4>
+
+        </div>
+
+        <div class="testimonio">
+
+            <div class="estrellas">
+                ⭐⭐⭐⭐⭐
+            </div>
+
+            <p>
+                "Compré un regalo y quedé encantada con el resultado."
+            </p>
+
+            <h4>- Andrea P.</h4>
+
+        </div>
+
+    </div>
+</section>
+
+    <h2>Descuentos</h2>
+
+    <p>Inicio / Descuentos</p>
+
+</header>
+
+<!-- ================= CONTENEDOR PRINCIPAL ================= -->
+<div class="menu-categorias">
+
+    <button class="btn-categorias">
+
+        ☰ Categorías
+
+    </button>
+
+    <div class="contenido-categorias">
+
+        <a th:href="@{/aretes}">Aretes</a>
+
+        <a th:href="@{/collares}">Collares</a>
+
+        <a th:href="@{/bolsos}">Bolsos</a>
+
+        <a th:href="@{/relojes}">Relojes</a>
+
+        <a th:href="@{/lentes}">Lentes</a>
+
+        <a th:href="@{/pulseras}">Pulseras</a>
+
+        <a th:href="@{/anillos}">Anillos</a>
+
+    </div>
+
+</div>
+
+    <!-- ================= PRODUCTOS DINÁMICOS ================= -->
+    <section class="productos">
+
+    <div class="card"
+         th:each="producto : ${productosInicio}">
+
+        <span class="descuento"
+              th:text="'-' + ${producto.descuento} + '%'">
+        </span>
+
+        <img th:src="@{${producto.imagenUrl}}">
+
+        <p th:text="${producto.nombre} + ' - $' + ${producto.precio}">
+        </p>
+
+        <form th:action="@{/agregar/{id}(id=${producto.id})}"
+              method="post">
+
+            <button type="submit">
+                Agregar al carrito
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+</div>
+
+<section class="beneficios">
+    <h2>Beneficios</h2>
+
+    <div class="beneficio-item">🚚 Envíos rápidos</div>
+    <div class="beneficio-item">🔒 Pagos seguros</div>
+    <div class="beneficio-item">⭐ Productos de calidad</div>
+
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+
+    <div class="footer-contenido">
+
+        <div>
+
+            <h2>DIANA'S</h2>
+
+            <p>
+                Descubre la última colección,
+                compra online ropa y accesorios.
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Sitio Web</h3>
+
+            <p>
+                <a th:href="@{/}">
+                    Inicio
+                </a>
+            </p>
+
+            <p>
+                <a th:href="@{/nosotros}">
+                    Nosotros
+                </a>
+            </p>
+
+        </div>
+
+        <div>
+
+            <h3>Políticas</h3>
+
+            <p>Términos</p>
+
+            <p>Privacidad</p>
+
+        </div>
+
+        <div>
+
+            <h3>Contáctanos</h3>
+
+            <p>+593 0992534736</p>
+
+            <p>ventas@tienda.com</p>
+
+        </div>
+
+        <div>
+
+            <h3>Síguenos</h3>
+
+            <!-- FACEBOOK -->
+            <p>
+
+                <a href="https://www.facebook.com"
+                   target="_blank">
+
+                    <img th:src="@{/imagenes/facebook.webp}"
+                         class="icono">
+
+                </a>
+
+            </p>
+
+            <!-- INSTAGRAM -->
+            <p>
+
+                <a href="https://www.instagram.com"
+                   target="_blank">
+
+                    <img th:src="@{/imagenes/instagram.webp}"
+                         class="icono">
+
+                </a>
+
+            </p>
+
+            <!-- TIKTOK -->
+            <p>
+
+                <a href="https://www.tiktok.com"
+                   target="_blank">
+
+                    <img th:src="@{/imagenes/tiktok.webp}"
+                         class="icono">
+
+                </a>
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <div class="footer-abajo">
+
+        <p>© 2026 Tienda DIANA'S</p>
+
+    </div>
+
+</footer>
+
+<!-- ================= BOTÓN WHATSAPP ================= -->
+<a href="https://wa.me/593992534736?text=Hola,%20bienvenido%20a%20DIANA'S.%20Me%20gustaría%20obtener%20más%20información%20sobre%20sus%20productos."
+   target="_blank"
+   class="whatsapp">
+
+    💬
+
+</a>
+<!-- ================= SCRIPT ================= -->
+<script th:src="@{/js/main.js}"></script>
+</body>
+
+</html>

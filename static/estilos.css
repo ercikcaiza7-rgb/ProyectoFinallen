@@ -1,0 +1,2099 @@
+/* ===========================================================
+   ESTILO GLOBAL Y VARIABLES (COLORES Y CONFIGURACIÓN BASE)
+=========================================================== */
+/*root selector especial  que representa todo el documento y es el centro de control de los estilos*/
+:root {  
+    /* Variables CSS (sirven para reutilizar colores en toda la página) */
+
+    --fondo-vainilla: #fdfaf1;   /* Color de fondo principal de la página */
+    --blanco-puro: #ffffff;      /* Color blanco para tarjetas y navbar */
+    --dorado-suave: #d4af37;     /* Color decorativo (botones, hover) */
+    --cafe-oscuro: #3e2723;      /* Color principal del texto */
+    --crema-oscuro: #f3e5ab;     /* Color claro para contrastes */
+    --sombra: rgba(62, 39, 35, 0.1); /* Sombra suave para tarjetas */
+}
+
+/* Selector universal: aplica a TODOS los elementos */
+* {
+    margin: 0;              /* Elimina márgenes por defecto */
+    padding: 0;             /* Elimina relleno por defecto */
+    box-sizing: border-box; /* Hace que el tamaño incluya borde y padding */
+    font-family: 'Poppins', 'Segoe UI', sans-serif; /* Tipografía */
+}
+
+/* Cuerpo de la página */
+body {
+    background-color: var(--fondo-vainilla); /* Fondo general */
+    color: var(--cafe-oscuro);               /* Color del texto */
+}
+button {
+    font-family: inherit;
+}
+/* ===========================================================
+   BARRA SUPERIOR
+=========================================================== */
+
+.topbar {
+    background-color: var(--cafe-oscuro); /* Fondo oscuro */
+    color: var(--crema-oscuro);           /* Texto claro */
+    text-align: center;                   /* Centra el texto */
+    padding: 8px;                         /* Espacio interno */
+    font-size: 13px;                      /* Tamaño pequeño letras*/
+    letter-spacing: 2px;                  /* Espaciado entre letras */
+}
+
+/* ===========================================================
+    NAVBAR (MENÚ SUPERIOR)
+=========================================================== */
+
+nav {
+    background-color: var(--blanco-puro); /* Fondo blanco */
+    display: flex;                        /* Activa Flexbox */
+    justify-content: space-between;       /* Separa elementos */
+    align-items: center;                  /* Centra verticalmente */
+    padding: 15px 5%;                     /* Espaciado interno */
+    border-bottom: 2px solid var(--crema-oscuro); /* Línea inferior */
+
+    position: sticky; /* Hace que el menú se quede fijo */
+    top: 0;
+    z-index: 1000;   /* Prioridad sobre otros elementos */
+}
+
+nav h1 {
+    color: var(--cafe-oscuro); /* Color del título */
+    font-weight: bold;
+}
+
+/* ===========================================================
+   HEADER (ENCABEZADO DE SECCIÓN) - 
+=========================================================== */
+
+header {
+    background-color: var(--blanco-puro); 
+    /* Fondo blanco del encabezado */
+
+    text-align: center; 
+    /* Centra el contenido */
+
+    padding: 20px 0; 
+    /* Espacio interno reducido (antes 40px era demasiado y generaba diferencia entre secciones) */
+
+    margin: 0; 
+    /* Evita que se sume espacio externo adicional */
+}
+
+header h2 {
+    color: var(--cafe-oscuro); 
+    /* Color del título */
+
+    font-size: 2rem; 
+    /* Tamaño del texto */
+
+    margin: 0; 
+    /* Elimina el margen por defecto del h2  */
+}
+
+header p {
+    margin-top: 10px; 
+    /* Espacio controlado entre el título y el texto */
+}
+/* ===========================================================
+   CONTENEDOR PRINCIPAL (LAYOUT)
+=========================================================== */
+
+.contenedor {
+    display: flex; /* Divide en columnas (aside + productos) */
+    max-width: 1200px;
+    margin: 40px auto; /* Centra el contenido */
+    padding: 0 20px;
+    gap: 40px; /* Espacio entre columnas los separa */
+}
+
+/* ===========================================================
+   MENÚ LATERAL (CATEGORÍAS)
+=========================================================== */
+
+aside {
+    flex: 1; /* Ocupa menos espacio */
+}
+
+/* TÍTULO "Categorías" */
+aside h3 {
+    border-bottom: 2px solid var(--crema-oscuro); 
+    /* Línea decorativa debajo del título */
+
+    padding-bottom: 10px; 
+    /* Espacio entre el texto y la línea */
+
+    margin-bottom: 20px; 
+    /* Separación entre el título y la lista */
+}
+/* LISTA */
+aside ul {
+    list-style: none; /* Quita los puntos (viñetas) de la lista */
+}
+
+/* ENLACES (Aretes, Collares, etc.) */
+aside ul li a {
+    text-decoration: none; /* Quita el subrayado de los enlaces */
+    
+    color: #6d4c41; /* Color café elegante */
+    
+    display: block; 
+    /* Hace que todo el texto sea clickeable (no solo las letras) */
+
+    padding: 8px 0; 
+    /* Espacio vertical entre cada categoría */
+
+    transition: 0.3s; 
+    /* Hace que los cambios (hover) sean suaves */
+}
+
+/* EFECTO AL PASAR EL MOUSE */
+aside ul li a:hover {
+    color: var(--dorado-suave); 
+    /* Cambia el color a dorado al pasar el mouse */
+
+    padding-left: 10px; 
+    /* Se mueve un poco a la derecha (efecto elegante) */
+}
+
+/* ===========================================================
+   PRODUCTOS (GRID)
+=========================================================== */
+
+.productos {
+    flex: 3; /* Ocupa más espacio */
+    display: grid; /* Activa CSS Grid --organiza los productos en filas y columnas */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* Crea columnas automáticas adaptables */
+    gap: 25px;/*espacio entre cada tarjeta horizon-vertic*/
+    align-items: start;
+
+}
+
+/* Tarjeta de producto */
+.card {
+    background: var(--blanco-puro);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    box-shadow: 4px 4px 15px var(--sombra);/* Sombra → efecto de tarjeta flotante */
+    transition: transform 0.3s;/* Hace suave la animación */
+
+    position: relative;/*quita la nimacion*/
+    height: auto;
+
+    align-self: start;
+}
+
+/* Efecto al pasar mouse */
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+}
+
+.card img {
+    width: 100%;
+    height: 250px;
+
+    object-fit: contain;
+
+    background-color: white;
+
+    padding: 10px;
+
+    border-radius: 8px;
+
+    margin-bottom: 15px;
+
+    display: block;
+}
+
+/* Etiqueta de descuento */
+.descuento {
+    background-color: #d32f2f;/* Define el color de fondo rojo*/
+    color: white;/* Color del texto*/
+    padding: 3px 10px;
+    border-radius: 5px;
+
+    position: absolute; /* Permite ubicar el elemento en una posición exacta dentro*/
+    top: 25px;/*mueve hacia abajo desde arriba*/
+    left: 25px;
+    font-weight: bold;/* Hace el texto más grueso*/
+}
+
+
+/* Botón agregar al carrito */
+.card button {
+    background-color: var(--cafe-oscuro);
+    color: var(--crema-oscuro);
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 25px;
+    cursor: pointer;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+.card button:hover {
+    background-color: var(--dorado-suave);
+}
+
+/* ===========================================================
+    FOOTER (PIE DE PÁGINA)
+=========================================================== */
+
+.footer {
+    background-color: var(--cafe-oscuro);/* Fondo oscuro (le da estilo elegante) */
+    color: var(--crema-oscuro);   /* Color del texto claro para que contraste */
+    padding: 50px 5% 20px; /* Espaciado interno:
+       - 50px arriba
+       - 5% a los lados (responsive)
+       - 20px abajo */
+    margin-top: 60px;/* Separación con el contenido de arriba */
+}
+
+.footer-contenido {
+    display: flex;/* Coloca los bloques en fila (columnas) */
+    justify-content: space-between;/* Separa los bloques con espacio entre ellos */
+    flex-wrap: wrap; /* Se adapta en pantallas pequeñas, lo que no cabe en linea se baja*/
+    gap: 20px;/* Espacio entre cada bloque */
+}
+/* cuando pasa el mouse por arriba cambia de color*/
+.footer-contenido a {
+    color: var(--crema-oscuro);/* Color de los links */
+    text-decoration: none;/* Quita el subrayado */
+    opacity: 0.8;/* Un poco transparente (más elegante) */
+}
+/*animacion de las redes*/
+.footer-contenido a:hover {
+    opacity: 1; /* Se vuelve más visible */
+    text-decoration: underline;/* Aparece subrayado */
+}
+
+/* ===========================================================
+   BOTÓN WHATSAPP
+=========================================================== */
+
+.whatsapp{
+
+    position: fixed;
+
+    bottom: 20px;
+
+    right: 20px;
+
+    width: 60px;
+
+    height: 60px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #25D366;
+
+    color: white;
+
+    font-size: 30px;
+
+    text-decoration: none;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+    z-index: 999;
+}
+
+.whatsapp:hover{
+
+    transform: scale(1.1);
+
+    transition: 0.3s;
+}
+
+
+/* ===========================================================
+   RESPONSIVE (CELULARES)
+=========================================================== */
+
+@media (max-width: 768px) {
+
+    .contenedor {
+        flex-direction: column;
+    }
+
+    .productos {
+        grid-template-columns: 1fr;
+    }
+
+    nav h1 {
+        font-size: 18px;
+    }
+
+    nav {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 15px;
+
+        padding: 15px;
+    }
+
+    .nav-links {
+
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+    }
+
+    .auth-buttons {
+
+        width: 100%;
+
+        display: flex;
+
+        justify-content: center;
+    }
+
+    .auth-buttons div {
+
+        display: flex;
+
+        flex-direction: column;
+
+        align-items: center;
+
+        gap: 10px;
+
+        width: 100%;
+    }
+
+    .btn-login,
+    .btn-registro,
+    .btn-contacto {
+
+        width: 200px;
+
+        text-align: center;
+    }
+
+    .usuario-logueado {
+
+        text-align: center;
+
+        display: block;
+    }
+
+    /* CONTACTO */
+
+    .contacto-container {
+
+        width: 95%;
+
+        max-width: 95%;
+
+        margin: 15px auto;
+
+        padding: 20px;
+    }
+
+    .contacto-container h1 {
+
+        font-size: 28px;
+    }
+
+    .contacto-container input,
+    .contacto-container textarea {
+
+        width: 100%;
+
+        font-size: 16px;
+    }
+
+    .contacto-container textarea {
+
+        min-height: 120px;
+    }
+
+    .contacto-container button {
+
+        width: 100%;
+
+        font-size: 16px;
+    }
+}
+    /*responsive para celulares carrito*/
+@media (max-width: 768px){
+
+    .carrito-container{
+
+        width: 95%;
+
+        margin: 20px auto;
+    }
+
+    .tabla-carrito{
+
+        display: block;
+
+        overflow-x: auto;
+
+        white-space: nowrap;
+    }
+
+    .tabla-carrito th,
+    .tabla-carrito td{
+
+        padding: 8px;
+
+        font-size: 14px;
+    }
+
+    .img-carrito{
+
+        width: 40px;
+
+        height: 40px;
+
+        object-fit: contain;
+    }
+
+    .acciones-carrito{
+
+        display: flex;
+
+        flex-direction: column;
+
+        gap: 10px;
+
+        align-items: center;
+    }
+
+    .acciones-carrito button,
+    .acciones-carrito select{
+
+        width: 90%;
+    }
+
+    .carrito-container h1{
+
+        font-size: 2rem;
+
+        text-align: center;
+    }
+
+    .factura{
+
+    width: 100%;
+
+    padding: 15px;
+}
+
+.compra-exitosa h1{
+
+    font-size: 24px;
+}
+
+.nav-links{
+    margin-left: 0 !important;
+}
+
+.btn-carrito{
+
+    top: 90px;
+
+    right: 10px;
+
+    font-size: 14px;
+
+    padding: 10px 15px;
+}
+
+/* LOGIN Y REGISTRO RESPONSIVE OPTIMIZADO */
+
+.pantalla-dividida {
+    display: flex;
+    flex-direction: column; /* Apila el formulario arriba y la imagen abajo */
+    min-height: 100vh;
+    background-color: #fdfaf2; /* Fondo crema suave para unificar todo */
+}
+
+.lado-login {
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px 0;
+}
+
+/* El contenedor del formulario ahora es ancho y estético */
+.form-container {
+    width: 85% !important;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+/* OBLIGA A LOS INPUTS A EXPANDIRSE (Esto arregla los cuadros pequeños) */
+.form-container input[type="text"],
+.form-container input[type="email"],
+.form-container input[type="password"],
+.form-container input {
+    width: 100% !important;
+    box-sizing: border-box; /* Evita que el padding rompa el ancho */
+    padding: 12px 15px !important;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #e2d1b7;
+    border-radius: 8px !important; /* Bordes suaves modernos */
+    font-size: 16px;
+}
+
+/* Arreglo del botón registrarse (Mejora contraste y tamaño) */
+.form-container button, 
+.form-container .btn-registrar {
+    width: 100% !important;
+    padding: 14px !important;
+    background-color: #4a3319; /* Marrón oscuro corporativo */
+    color: #ffffff !important; /* TEXTO BLANCO PARA QUE SE LEA */
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Contenedor de la imagen abajo */
+.lado-imagen {
+    width: 100% !important;
+    height: 300px !important; /* Altura fija bonita para el cierre visual */
+    margin-top: auto; /* Lo empuja firmemente al fondo de la pantalla */
+    overflow: hidden;
+}
+
+/* Hace que la foto de la modelo cubra todo el ancho sin deformarse */
+.lado-imagen img {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; 
+    object-position: center top; /* Enfoca la cara de la modelo */
+}
+/*navar el de seccion nosotro se hizo mas a laderecha y no afecta al modo celeular*/
+@media (max-width: 768px) {
+    nav {
+        flex-direction: column; /* Alinea logo, menú y botones en vertical */
+        gap: 15px;
+        padding: 15px 2%; /* Reduce un poco los lados en pantallas chicas */
+    }
+
+    .nav-links {
+        margin-left: 0 !important;  /* Cancela el empuje magnético en celular */
+        margin-right: 0 !important; /* Centra el enlace horizontalmente */
+        margin-bottom: 5px;
+    }
+}
+
+}
+
+/*============================================================
+   RESPONSIVE (tablets)
+=============================================================*/
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .contenedor {
+        flex-direction: row;
+    }
+
+    aside {
+        flex: 1;
+    }
+
+    .productos {
+        flex: 2;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    header h2 {
+        font-size: 1.8rem;
+    }
+}
+/* ===========================================================
+    RESPONSIVE Computadora
+=========================================================== */
+@media (min-width: 1025px) {
+
+    .contenedor {
+        max-width: 1300px;
+    }
+
+    .productos {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    header h2 {
+        font-size: 2.2rem;
+    }
+}
+
+/* ===========================================================
+    ICONO REDES SOCIALES
+=========================================================== */
+.icono {
+    width: 25px;   /* tamaño pequeño */
+    height: 25px;
+    margin: 5px;
+    transition: 0.3s;
+}
+
+.icono:hover {
+    transform: scale(1.2); /* efecto al pasar el mouse */
+}
+/* ===========================================================
+    VIDEO
+=========================================================== */
+.video-container {
+    width: 80%;
+    height: 300px;
+    margin: 40px auto;
+}
+
+.video-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* ===========================================================
+   SECCIÓN NOSOTROS
+=========================================================== */
+
+.nosotros {
+    max-width: 900px; /* Limita el ancho para que no se vea muy extendido */
+    margin: 40px auto; /* Centra horizontalmente y da espacio arriba/abajo */
+    padding: 20px; /* Espacio interno (aire dentro del cuadro) */
+    text-align: center; /* Centra todo el texto */
+    background-color: var(--blanco-puro); /* Fondo blanco */
+    border-radius: 15px; /* Bordes redondeados */
+    box-shadow: 0 5px 15px var(--sombra); /* Sombra suave tipo tarjeta */
+    width: 100%;
+}
+
+/* ===========================================================
+   TÍTULO
+=========================================================== */
+
+.nosotros h3 {
+    margin-bottom: 20px; /* Espacio debajo del título */
+}
+
+/* ===========================================================
+   PÁRRAFOS
+=========================================================== */
+
+.nosotros p {
+    margin-bottom: 20px; /* Espacio entre cada párrafo */
+}
+.nosotros video {
+    width: 100%;
+    max-width: 500px;
+    display: block;
+    margin: 20px auto;
+}
+/* ===========================================================
+   TEXTO FINAL (NOTA)
+=========================================================== */
+
+.nosotros .nota {
+    margin-top: 30px; /* Más separación arriba para diferenciarlo */
+    font-style: italic; /* Texto en cursiva */
+}
+
+/* ===========================================================
+   BANNER
+=========================================================== */
+.banner {
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                url('/imagenes/baner.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.banner h2 {
+    font-size: 2.5rem;
+}
+
+.beneficios {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: var(--blanco-puro);
+}
+
+.beneficios h2 {
+    margin-bottom: 20px;
+}
+
+.beneficio-item {
+    display: inline-block;
+    margin: 10px 20px;
+    font-size: 16px;
+}
+#buscador {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 1px solid var(--crema-oscuro);
+    outline: none;
+    width: 200px;
+}
+
+#buscador:focus {
+    border-color: var(--dorado-suave);
+}
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.contenedor {
+    flex: none;
+}
+h2 {
+    text-align: center;
+    margin: 0;
+}
+
+/* ===========================================================
+   LOGIN
+=========================================================== */
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+}
+
+.login-card{
+    background-color: var(--blanco-puro);
+    width: 400px;
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px var(--sombra);
+    text-align: center;
+}
+
+.login-card h2{
+    color: var(--cafe-oscuro);
+    margin-bottom: 10px;
+}
+
+.login-texto{
+    color: #6d4c41;
+    margin-bottom: 25px;
+}
+
+.input-group{
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.input-group label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--cafe-oscuro);
+}
+
+.input-group input{
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--crema-oscuro);
+    border-radius: 10px;
+    outline: none;
+    background-color: var(--fondo-vainilla);
+}
+
+.input-group input:focus{
+    border-color: var(--dorado-suave);
+}
+
+.btn-login{
+    width: 100%;
+    padding: 12px;
+    background-color: var(--cafe-oscuro);
+    color: var(--crema-oscuro);
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-login:hover{
+    background-color: var(--dorado-suave);
+    color: white;
+}
+
+.mensaje-error{
+    color: red;
+    margin-top: 15px;
+}
+
+.mensaje-exito{
+    color: green;
+    margin-top: 15px;
+}
+
+.registro-link{
+    margin-top: 20px;
+}
+
+.registro-link a{
+    color: var(--dorado-suave);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ===========================================================
+   CARRITO
+=========================================================== */
+
+.carrito-container{
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.tabla-carrito{
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--blanco-puro);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px var(--sombra);
+}
+
+.tabla-carrito th{
+    background-color: var(--cafe-oscuro);
+    color: var(--crema-oscuro);
+    padding: 15px;
+}
+
+.tabla-carrito td{
+    padding: 15px;
+    text-align: center;
+    border-bottom: 1px solid var(--crema-oscuro);
+}
+
+.btn-eliminar{
+    background-color: #b23b3b;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+    text-decoration: none;
+}
+
+.btn-eliminar:hover{
+    background-color: #8a2d2d;
+}
+
+.total-carrito{
+    margin-top: 25px;
+    text-align: right;
+    color: var(--cafe-oscuro);
+}
+
+.acciones-carrito{
+    margin-top: 20px;
+    text-align: right;
+}
+
+.btn-comprar-final{
+    background-color: var(--cafe-oscuro);
+    color: var(--crema-oscuro);
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-comprar-final:hover{
+    background-color: var(--dorado-suave);
+    color: white;
+}
+
+
+/* ===========================================================
+   BOTÓN VER CARRITO
+=========================================================== */
+
+.btn-carrito{
+    background-color: var(--cafe-oscuro);
+    color: var(--crema-oscuro);
+    padding: 12px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    position: fixed;
+    top: 160px; /* CAMBIO: Lo bajamos más para que se despegue del menú */
+    right: 25px;
+    box-shadow: 0 5px 15px var(--sombra);
+    transition: 0.3s;
+    z-index: 1100; /* Se queda abajo del nav (1000) */
+}
+
+
+.btn-carrito:hover{
+    background-color: var(--dorado-suave);
+    color: white;
+    transform: scale(1.05);
+}
+
+
+/* ===========================================================
+   LOGIN Y REGISTRO
+=========================================================== */
+
+.auth-container{
+    width: 1000px;
+    max-width: 95%;
+
+    display: flex;
+
+    background: white;
+
+    border-radius: 25px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.15);
+
+    margin: 60px auto;
+}
+
+.form-container{
+    width: 40%;
+
+    padding: 40px;
+
+    background-color: var(--blanco-puro);
+}
+
+.image-container{
+    width: 60%;
+}
+
+.image-container img{
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+}
+
+.form-container h2{
+    text-align: center;
+    margin-bottom: 25px;
+    color: var(--cafe-oscuro);
+}
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+.form-group label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--cafe-oscuro);
+}
+
+.form-group input{
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--crema-oscuro);
+    border-radius: 12px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-group input:focus{
+    border-color: var(--dorado-suave);
+}
+
+.btn-form{
+    width: 100%;
+    background-color: var(--cafe-oscuro);
+    color: var(--crema-oscuro);
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-form:hover{
+    background-color: var(--dorado-suave);
+    color: white;
+}
+
+.link-form{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-form a{
+    color: var(--cafe-oscuro);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.link-form a:hover{
+    color: var(--dorado-suave);
+}
+
+/* ===========================================================
+   MENSAJE ERROR LOGIN
+=========================================================== */
+
+.error-login{
+    background-color: #f8d7da;
+    color: #842029;
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+/* ===========================================================
+   BOTONES LOGIN Y REGISTRO NAVBAR
+=========================================================== */
+
+.nav-botones{
+    display: flex;
+    gap: 10px;
+}
+
+.btn-login,
+.btn-registro{
+    text-decoration: none;
+    padding: 10px 18px;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-login{
+    background-color: transparent;
+    border: 2px solid var(--cafe-oscuro);
+    color: var(--cafe-oscuro);
+}
+
+.btn-login:hover{
+    background-color: var(--cafe-oscuro);
+    color: white;
+}
+
+.btn-registro{
+    background-color: var(--dorado-suave);
+    color: white;
+}
+
+.btn-registro:hover{
+    transform: scale(1.05);
+}
+
+/* ===========================================================
+   BOTÓN VOLVER
+=========================================================== */
+
+.btn-volver{
+    background-color: var(--cafe-oscuro);
+    color: var(--crema-oscuro);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    text-decoration: none;
+    display: inline-block;
+}
+.btn-volver:hover{
+    background-color: var(--dorado-suave);
+    color: white;
+    transform: scale(1.05);
+}
+/* ===========================================================
+   CONTENEDOR LOGIN Y REGISTRO
+=========================================================== */
+.form-container h2{
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--cafe-oscuro);
+    font-size: 2rem;
+}
+
+/* ===========================================================
+   INPUTS
+=========================================================== */
+
+.form-group{
+    margin-bottom: 20px;
+}
+
+.form-group label{
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--cafe-oscuro);
+}
+
+.form-group input{
+    width: 100%;
+    padding: 14px;
+    border: 2px solid var(--crema-oscuro);
+    border-radius: 12px;
+    outline: none;
+    transition: 0.3s;
+    font-size: 15px;
+}
+
+.form-group input:focus{
+    border-color: var(--dorado-suave);
+    box-shadow: 0 0 10px rgba(212,175,55,0.3);
+}
+
+/* ===========================================================
+   BOTONES FORMULARIO
+=========================================================== */
+
+.btn-form{
+    width: 100%;
+    background-color: var(--cafe-oscuro);
+    color: var(--crema-oscuro);
+    border: none;
+    padding: 14px;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-form:hover{
+    background-color: var(--dorado-suave);
+    color: white;
+    transform: scale(1.03);
+}
+
+/* ===========================================================
+   LINKS LOGIN/REGISTRO
+=========================================================== */
+
+.link-form{
+    text-align: center;
+    margin-top: 20px;
+}
+
+.link-form a{
+    text-decoration: none;
+    color: var(--cafe-oscuro);
+    font-weight: bold;
+}
+
+.link-form a:hover{
+    color: var(--dorado-suave);
+}
+
+/* ===========================================================
+   ERROR LOGIN
+=========================================================== */
+
+.error-login{
+    background-color: #f8d7da;
+    color: #842029;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* ===========================================================
+   TABLA CARRITO MEJORADA
+=========================================================== */
+
+.carrito-container{
+    max-width: 1100px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.tabla-carrito{
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 20px;
+    background-color: var(--blanco-puro);
+    box-shadow: 0 8px 25px var(--sombra);
+}
+
+.tabla-carrito th{
+    background-color: var(--cafe-oscuro);
+    color: var(--crema-oscuro);
+    padding: 18px;
+    font-size: 16px;
+}
+
+.tabla-carrito td{
+    padding: 18px;
+    text-align: center;
+    border-bottom: 1px solid var(--crema-oscuro);
+}
+
+.tabla-carrito tr:hover{
+    background-color: #fffdf6;
+}
+
+/* ===========================================================
+   TOTAL CARRITO
+=========================================================== */
+
+.total-carrito{
+    margin-top: 25px;
+    text-align: right;
+    font-size: 22px;
+    color: var(--cafe-oscuro);
+}
+
+/* ===========================================================
+   BOTÓN COMPRAR FINAL
+=========================================================== */
+
+.acciones-carrito{
+    margin-top: 25px;
+    text-align: right;
+}
+
+.btn-comprar-final{
+    background-color: var(--cafe-oscuro);
+    color: var(--crema-oscuro);
+    border: none;
+    padding: 14px 28px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-comprar-final:hover{
+    background-color: var(--dorado-suave);
+    color: white;
+    transform: scale(1.05);
+}
+/* ===========================================================
+   BOTÓN CERRAR LOGIN / REGISTRO
+=========================================================== */
+
+.cerrar-formulario{
+    position: absolute;
+    top: 25px;
+    right: 30px;
+
+    text-decoration: none;
+
+    background-color: var(--cafe-oscuro);
+    color: white;
+
+    width: 40px;
+    height: 40px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 20px;
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.cerrar-formulario:hover{
+    background-color: #b23b3b;
+    transform: scale(1.1);
+}
+body{
+    position: relative;
+}
+/* ===========================================================
+   SECCION DE NOSOTROS EN EL NAVAR
+=========================================================== */
+.nav-links{
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+    margin-left: auto;
+    margin-right: 35px;
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: var(--cafe-oscuro);
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.nav-links a:hover{
+    color: var(--dorado-suave);
+}
+.usuario-logueado{
+    font-weight: bold;
+    margin-right: 15px;
+    color: #3b241c;
+    font-size: 16px;
+}
+/* ===========================================================
+   CARRITO PARTE DE LA IMAGEN
+=========================================================== */
+.img-carrito{
+
+    width: 70px;
+
+    height: 70px;
+
+    object-fit: cover;
+
+    border-radius: 10px;
+}
+/* ===========================================================
+   BOTON VACIAR CARRITO 
+=========================================================== */
+.btn-vaciar{
+
+    background: #d9534f;
+
+    color: white;
+
+    border: none;
+
+    padding: 12px 20px;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-weight: bold;
+}
+/* ===========================================================
+  CONTAINER CONTACTO
+=========================================================== */
+.contacto-container{
+
+    max-width: 700px;
+
+    margin: 50px auto;
+
+    padding: 30px;
+
+    background: white;
+
+    border-radius: 15px;
+
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.contacto-container form{
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 15px;
+}
+
+.contacto-container input,
+.contacto-container textarea{
+
+    padding: 12px;
+
+    border: 1px solid #ccc;
+
+    border-radius: 8px;
+}
+
+.contacto-container button{
+
+    padding: 12px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.mensaje-exito{
+
+    padding: 10px;
+
+    margin-bottom: 15px;
+
+    border-radius: 8px;
+}
+
+/* ===========================================================
+  BOTON CONTACTO
+=========================================================== */
+.btn-contacto{
+
+    text-decoration: none;
+
+    padding: 10px 15px;
+
+    border-radius: 8px;
+
+    background: #444;
+
+    color: white;
+
+    font-weight: bold;
+}
+/* ===========================================================
+  MENU CATEGORIAS
+=========================================================== */
+.menu-categorias{
+
+    position: relative;
+
+    display: inline-block;
+
+    margin: 20px;
+}
+
+.btn-categorias{
+
+    background: #222;
+
+    color: white;
+
+    padding: 12px 18px;
+
+    border: none;
+
+    border-radius: 10px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    font-weight: bold;
+}
+
+.contenido-categorias{
+
+    display: none;
+
+    position: absolute;
+
+    background: white;
+
+    min-width: 220px;
+
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+
+    border-radius: 10px;
+
+    z-index: 1000;
+}
+
+.contenido-categorias a{
+
+    display: block;
+
+    padding: 12px;
+
+    text-decoration: none;
+
+    color: black;
+}
+
+.contenido-categorias a:hover{
+
+    background: #f2f2f2;
+}
+
+.menu-categorias:hover .contenido-categorias{
+
+    display: block;
+}
+/* ===========================================================
+  COMPRA EXITOSA
+=========================================================== */
+.compra-exitosa{
+
+    text-align: center;
+
+    margin-top: 100px;
+
+    padding: 30px;
+}
+
+.compra-exitosa h1{
+
+    color: green;
+
+    margin-bottom: 20px;
+}
+
+.btn-volver-inicio{
+
+    display: inline-block;
+
+    margin-top: 20px;
+
+    padding: 12px 20px;
+
+    text-decoration: none;
+
+    border-radius: 10px;
+
+    background: #222;
+
+    color: white;
+}
+
+
+.select-pago{
+
+    padding: 10px 15px;
+
+    border: 2px solid #d4af37;
+
+    border-radius: 10px;
+
+    font-size: 16px;
+
+    font-weight: 500;
+
+    background-color: white;
+
+    color: #333;
+
+    cursor: pointer;
+
+    outline: none;
+
+    margin-right: 10px;
+
+    min-width: 180px;
+}
+
+.select-pago:hover{
+
+    border-color: #b8860b;
+}
+
+.select-pago:focus{
+
+    border-color: #b8860b;
+
+    box-shadow: 0 0 5px rgba(212,175,55,0.5);
+}
+
+/* =====================================
+   FACTURA VISUAL
+===================================== */
+
+.factura{
+
+    margin-top: 25px;
+
+    padding: 25px;
+
+    border: 2px dashed #c9a36d;
+
+    border-radius: 15px;
+
+    text-align: left;
+
+    background: #fffdf8;
+
+    max-width: 500px;
+
+    margin-left: auto;
+
+    margin-right: auto;
+}
+
+.factura h2{
+
+    text-align: center;
+
+    margin-bottom: 20px;
+}
+
+.factura p{
+
+    margin: 10px 0;
+
+    font-size: 16px;
+}
+/* ===========================
+   HISTORIAL DE COMPRAS
+=========================== */
+
+.historial-container{
+
+    max-width: 900px;
+
+    margin: 40px auto;
+
+    padding: 20px;
+}
+
+.tabla-historial{
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    background: white;
+}
+
+.tabla-historial th,
+.tabla-historial td{
+
+    border: 1px solid #ddd;
+
+    padding: 15px;
+
+    text-align: center;
+}
+
+.tabla-historial th{
+
+    background: #f5f5f5;
+}
+/* ===========================
+   FONDO DE LOGIN
+=========================== */
+.login-body {
+    background: url("/imagenes/login.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* ===========================
+   FONDO DE REGISTRO
+=========================== */
+.register-body {
+    background: url("/imagenes/registro.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+/* ===========================
+   FONDO DE CARRITO 
+=========================== */
+.cart-body {
+    background: url("/imagenes/carrito.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+/* ===========================
+   FONDO HISTORIAL COMPRA
+=========================== */
+.history-body {
+    background: url("/imagenes/historial.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+/* ===========================
+   FONDO NOSOTROS 
+=========================== */
+.about-body {
+    background: url("/imagenes/nosotros.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+/* ===========================
+   FONDO CONTACTO
+=========================== */
+.contact-body {
+    background: url("/imagenes/contacto.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* ==========================
+   FACTURA
+========================== */
+.factura-container{
+
+    max-width: 900px;
+
+    margin: 40px auto;
+
+    background: white;
+
+    padding: 30px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+}
+
+.factura-header{
+
+    text-align: center;
+
+    margin-bottom: 25px;
+
+    border-bottom: 2px solid #d4af37;
+
+    padding-bottom: 15px;
+}
+
+.empresa{
+
+    color: #6b3e26;
+
+    font-size: 18px;
+
+    font-weight: bold;
+}
+
+.datos-cliente{
+
+    margin-bottom: 20px;
+}
+
+.tabla-factura{
+
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+}
+
+.tabla-factura th{
+
+    background: #4b2c20;
+
+    color: white;
+
+    padding: 12px;
+}
+
+.tabla-factura td{
+
+    padding: 12px;
+
+    border-bottom: 1px solid #ddd;
+
+    text-align: center;
+}
+
+.total-factura{
+
+    text-align: right;
+
+    margin-top: 25px;
+
+    color: #4b2c20;
+}
+
+/* QR BONITO */
+
+.seccion-qr{
+
+    margin-top: 30px;
+
+    text-align: center;
+}
+
+.qr-elegante{
+
+    width: 150px;
+
+    height: 150px;
+
+    background: #fff;
+
+    border: 6px solid #111;
+
+    margin: auto;
+
+    display: grid;
+
+    grid-template-columns: repeat(5,1fr);
+
+    gap: 4px;
+
+    padding: 8px;
+}
+
+.q1,
+.q2,
+.q3,
+.pixel{
+
+    background: black;
+}
+
+.q1{
+
+    width: 35px;
+    height: 35px;
+}
+
+.q2{
+
+    width: 35px;
+    height: 35px;
+}
+
+.q3{
+
+    width: 35px;
+    height: 35px;
+}
+
+.texto-qr{
+
+    margin-top: 10px;
+
+    font-size: 14px;
+
+    color: #555;
+}
+
+
+/* ==========================
+   BOTON DETALLE FACTURA EN HISTORIAL
+========================== */
+.btn-detalle{
+
+    display: inline-block;
+
+    background: #4b2c20;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 8px 15px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+
+    font-weight: bold;
+
+    transition: 0.3s;
+}
+
+.btn-detalle:hover{
+
+    background: #d4af37;
+
+    color: #4b2c20;
+
+    transform: scale(1.05);
+}
+
+/* =============================================
+   MENSAJE ERROR SI EL USUARIO YA ESTA REGISTRADO
+================================================== */
+.mensaje-error {
+
+background: #ffe5e5;
+
+color: #c62828;
+
+border: 1px solid #ef9a9a;
+
+padding: 12px;
+
+border-radius: 10px;
+
+margin-bottom: 15px;
+
+text-align: center;
+
+font-weight: bold;
+
+}
+/* =============================================
+   LOGO TIENDA
+================================================== */
+.logo-tienda img{
+
+    height: 90px;
+
+    width: auto;
+}
+
+/* ================= CARRUSEL ================= */
+
+.carrusel{
+
+    width: 90%;
+    max-width: 1200px;
+
+    height: 500px;
+
+    margin: 30px auto;
+
+    position: relative;
+
+    overflow: hidden;
+
+    border-radius: 15px;
+
+    background: white;
+}
+
+.slide{
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: contain;
+
+    background: white;
+
+    display: none;
+}
+
+.slide.activo{
+
+    display: block;
+}
+/* ==========================================
+   TESTIMONIOS
+========================================== */
+
+.testimonios{
+
+    padding: 60px 20px;
+
+    text-align: center;
+
+    background: #fff;
+}
+
+.testimonios h2{
+
+    margin-bottom: 40px;
+
+    color: #3e2723;
+}
+
+.contenedor-testimonios{
+
+    display: flex;
+
+    justify-content: center;
+
+    gap: 25px;
+
+    flex-wrap: wrap;
+}
+
+.testimonio{
+
+    width: 300px;
+
+    background: white;
+
+    padding: 25px;
+
+    border-radius: 15px;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+
+    transition: 0.3s;
+}
+
+.testimonio:hover{
+
+    transform: translateY(-5px);
+}
+
+.estrellas{
+
+    font-size: 22px;
+
+    margin-bottom: 15px;
+}
+
+.testimonio p{
+
+    color: #555;
+
+    margin-bottom: 15px;
+}
+
+.testimonio h4{
+
+    color: #3e2723;
+}
+/* ==================================
+   PANTALLA DIVIDIDA
+================================== */
+
+.pantalla-dividida{
+    display:flex;
+    min-height:100vh;
+}
+
+.lado-login{
+    width:50%;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.lado-imagen{
+    width:50%;
+
+    background:url("/imagenes/lateral1.png")
+    center center / cover no-repeat;
+}
+.imagen-qr{
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}

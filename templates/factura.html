@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Factura</title>
+
+    <link rel="stylesheet"
+          th:href="@{/estilos.css}">
+
+</head>
+
+<body>
+
+<div class="factura-container">
+
+    <h1>🧾 FACTURA DIANA'S</h1>
+
+    <hr>
+
+    <p>
+
+        <strong>Pedido:</strong>
+
+        <span th:text="${pedido.id}">
+        </span>
+
+    </p>
+
+    <p>
+
+        <strong>Cliente:</strong>
+
+        <span th:text="${pedido.usuario.nombre}">
+        </span>
+
+    </p>
+
+    <p>
+
+        <strong>Fecha:</strong>
+
+        <span th:text="${pedido.fecha}">
+        </span>
+
+    </p>
+
+    <table class="tabla-factura">
+
+        <tr>
+
+            <th>Producto</th>
+
+            <th>Cantidad</th>
+
+            <th>Subtotal</th>
+
+        </tr>
+
+        <tr th:each="detalle : ${detalles}">
+
+            <td th:text="${detalle.producto.nombre}">
+            </td>
+
+            <td th:text="${detalle.cantidad}">
+            </td>
+
+            <td>
+
+                $
+
+                <span th:text="${detalle.subtotal}">
+                </span>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+    <h2>
+
+        Total: $
+
+        <span th:text="${pedido.total}">
+        </span>
+
+    </h2>
+
+    <div class="qr-falso">
+
+        QR DEMOSTRATIVO
+
+    </div>
+
+    <a th:href="@{/historial-compras}"
+       class="btn-volver-inicio">
+
+        Volver
+
+    </a>
+
+</div>
+
+</body>
+
+</html>

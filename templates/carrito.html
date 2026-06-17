@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Carrito</title>
+
+    <link rel="stylesheet"
+          th:href="@{/estilos.css}">
+
+</head>
+<body class="cart-body"></body>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<nav>
+
+    <div class="logo-tienda">
+
+    <img th:src="@{/imagenes/logo.png}"
+         alt="DIANA'S">
+
+    </div>
+
+    <a th:href="@{/}" class="btn-volver">
+        ⬅ Volver a la tienda
+    </a>
+
+</nav>
+
+<!-- ================= CARRITO ================= -->
+
+<div class="carrito-container">
+
+    <h1>🛒 Carrito de Compras</h1>
+
+    <table class="tabla-carrito">
+
+        <tr>
+
+    <th>Imagen</th>
+
+    <th>Producto</th>
+
+    <th>Precio</th>
+
+    <th>Cantidad</th>
+
+    <th>Acción</th>
+
+        </tr>
+
+        <tr th:each="item : ${carrito}">
+
+    <td>
+
+        <img th:src="@{${item.producto.imagenUrl}}"
+             alt="Producto"
+             class="img-carrito">
+
+    </td>
+
+    <td th:text="${item.producto.nombre}">
+    </td>
+
+    <td>
+<!-- producto descuento------------------------------------>
+    <span th:if="${item.producto.descuento > 0}">
+
+        $
+
+        <span th:text="${item.producto.precio - (item.producto.precio * item.producto.descuento / 100)}">
+        </span>
+
+    </span>
+
+    <span th:if="${item.producto.descuento == 0}">
+
+        $
+
+        <span th:text="${item.producto.precio}">
+        </span>
+
+    </span>
+   <!----------------------------------------------------->
+</td>
+
+    <td th:text="${item.cantidad}">
+    </td>
+
+    <td>
+
+        <a th:href="@{/eliminar/{id}(id=${item.id})}"
+           class="btn-eliminar">
+
+            ❌ Eliminar
+
+        </a>
+    </td>
+</tr>
+    </table>
+      <!-- ================= TOTAL ================= -->
+    <div class="total-carrito">
+        <h2>
+            Total: $
+            <span th:text="${total}"></span>
+        </h2>
+    </div>
+    <!-- ================= BOTONES ================= -->
+    <div class="acciones-carrito">
+    <form th:action="@{/finalizar-compra}"
+          method="post">
+        <select name="metodoPago" class="select-pago">
+
+            <option value="Efectivo">Efectivo</option>
+            <option value="Transferencia">Transferencia</option>
+            <option value="Tarjeta">Tarjeta</option>
+
+        </select>
+
+        <button type="submit"
+                class="btn-comprar-final">
+
+            Finalizar Compra
+
+        </button>
+
+    </form>
+
+    <form th:action="@{/vaciar-carrito}"
+          method="post">
+
+        <button type="submit"
+                class="btn-vaciar">
+
+            🗑 Vaciar Carrito
+
+        </button>
+
+    </form>
+
+</div>
+
+
+
+</div>
+
+</body>
+
+</html>

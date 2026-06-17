@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Compra Exitosa</title>
+
+    <link rel="stylesheet"
+          th:href="@{/estilos.css}">
+
+</head>
+
+<body>
+
+<div class="compra-exitosa">
+
+    <h1>✅ Compra realizada correctamente</h1>
+
+    <p>
+        Gracias por comprar en
+        <strong>DIANA'S</strong>
+    </p>
+
+    <div class="factura">
+
+        <h2>🧾 FACTURA DE COMPRA</h2>
+
+        <hr>
+
+        <p>
+            <strong>Tienda:</strong>
+            DIANA'S
+        </p>
+
+        <p>
+           <strong>Cliente:</strong>
+
+            <span th:text="${nombreUsuario}"></span>
+        </p>
+
+        <p>
+            <strong>Estado:</strong>
+            PAGADO
+        </p>
+
+        <p>
+            <strong>Fecha:</strong>
+            <span id="fechaActual"></span>
+        </p>
+
+        <p>
+            <strong>Pedido registrado correctamente.</strong>
+        </p>
+
+        <hr>
+
+        <h3>
+            ¡Gracias por su compra!
+        </h3>
+
+    </div>
+
+    <a th:href="@{/}"
+       class="btn-volver-inicio">
+
+        Volver al Inicio
+
+    </a>
+
+</div>
+
+<script>
+
+document.getElementById("fechaActual")
+        .innerHTML =
+        new Date().toLocaleDateString();
+
+</script>
+
+</body>
+
+</html>

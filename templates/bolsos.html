@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolsos</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/estilos.css}">
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo-tienda">
+
+    <img th:src="@{/imagenes/logo.png}"
+         alt="DIANA'S">
+
+    </div>
+
+        <button class="btn-volver" onclick="window.location.href='/'">
+            ⬅ Volver
+        </button>
+    </nav>
+
+    <header>
+        <h2>Bolsos</h2>
+    </header>
+<!---Productos-->
+    <section class="productos">
+
+    <div class="card"
+         th:each="producto : ${productosBolsos}">
+
+        <img th:src="@{${producto.imagenUrl}}">
+
+        <p th:text="${producto.nombre} + ' - $' + ${producto.precio}">
+        </p>
+
+        <form th:action="@{/agregar/{id}(id=${producto.id})}"
+              method="post">
+
+            <button type="submit">
+                Agregar al carrito
+            </button>
+
+        </form>
+
+    </div>
+
+</section>
+
+    <!-- JS -->
+    <script th:src="@{/main.js}"></script>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-contenido">
+
+            <div>
+                <h2>DIANA'S</h2>
+                <p>Descubre la última colección, compra online ropa y accesorios.</p>
+            </div>
+
+            <div>
+                <h3>Sitio Web</h3>
+                <p>
+            <a th:href="@{/}">
+             Inicio
+            </a>
+            </p>
+
+             <p>
+             <a th:href="@{/nosotros}">
+             Nosotros
+             </a>
+             </p>
+            </div>
+
+            <div>
+                <h3>Políticas</h3>
+                <p>Términos</p>
+                <p>Privacidad</p>
+            </div>
+
+            <div>
+                <h3>Contáctanos</h3>
+                <p>+593 0992534736</p>
+                <p>ventas@tienda.com</p>
+            </div>
+
+            <div>
+                <h3>Síguenos</h3>
+                <p><a href="https://www.facebook.com" target="_blank">Facebook</a></p>
+                <p><a href="https://www.instagram.com" target="_blank">Instagram</a></p>
+                <p><a href="https://www.tiktok.com" target="_blank">TikTok</a></p>
+            </div>
+
+        </div>
+
+        <div class="footer-abajo">
+            <p>© 2026 Tienda DIANA'S</p>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

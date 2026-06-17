@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nosotros - DIANA'S</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" th:href="@{/estilos.css}">
+</head>
+<body class="about-body"></body>
+<body>
+
+    <!-- BARRA SUPERIOR -->
+    <div class="topbar">
+        Envío gratis desde $100
+    </div>
+
+    <!-- NAVBAR -->
+    <nav>
+
+        <div class="logo-tienda">
+
+    <img th:src="@{/imagenes/logo.png}"
+         alt="DIANA'S">
+
+    </div>
+
+        <div class="auth">
+
+            <button class="btn-volver"
+                    onclick="window.location.href='/'">
+
+                ⬅ Volver
+
+            </button>
+
+        </div>
+
+    </nav>
+
+    <!-- ENCABEZADO -->
+    <header>
+
+        <h2>Sobre Nosotros</h2>
+
+        <p>Inicio / Nosotros</p>
+
+    </header>
+
+    <!-- VIDEO -->
+    <div class="video-container">
+
+        <video autoplay muted loop>
+
+            <source th:src="@{/videos/video.mp4}"
+                    type="video/mp4">
+
+        </video>
+
+    </div>
+
+    <!-- CONTENIDO -->
+    <section class="nosotros">
+
+        <h3>¿Quiénes somos?</h3>
+
+        <p>
+            En <strong>DIANA'S</strong> nos especializamos en ofrecer
+            bisutería elegante y moderna, pensada para resaltar tu estilo
+            en cualquier ocasión.
+        </p>
+
+        <p>
+            Nuestro objetivo es brindar productos accesibles,
+            de buena calidad y con diseños atractivos que se adapten
+            a las tendencias actuales.
+        </p>
+
+        <p>
+            Cada pieza ha sido seleccionada cuidadosamente para ofrecerte
+            lo mejor en accesorios y ayudarte a complementar tu look
+            con elegancia.
+        </p>
+        <h3>Nuestra Misión</h3>
+
+        <p>
+        Brindar accesorios y bisutería de calidad que permitan a nuestros
+        clientes expresar su estilo personal con elegancia, confianza y
+        autenticidad.
+        </p>
+
+        <h3>Nuestra Visión</h3>
+
+        <p>
+        Convertirnos en una tienda referente en accesorios de moda,
+        destacándonos por la calidad de nuestros productos y la satisfacción
+        de nuestros clientes.
+        </p>
+
+        <p class="nota">
+            Este sitio web fue desarrollado como proyecto académico
+    utilizando HTML, CSS, JavaScript, Spring Boot, Thymeleaf y MySQL,
+    aplicando conceptos de desarrollo web y bases de datos relacionales.
+        </p>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+
+        <div class="footer-contenido">
+
+            <div>
+
+                <h2>DIANA'S</h2>
+
+                <p>
+                    Descubre la última colección,
+                    compra online ropa y accesorios.
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Sitio Web</h3>
+
+                <p>
+                    <a th:href="@{/}">Inicio</a>
+                </p>
+
+                <p>
+                    <a th:href="@{/nosotros}">Nosotros</a>
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Políticas</h3>
+                <p>Términos</p>
+                <p>Privacidad</p>
+
+            </div>
+
+            <div>
+
+                <h3>Contáctanos</h3>
+                <p>+593 0992534736</p>
+                <p>ventas@tienda.com</p>
+
+            </div>
+
+            <div>
+
+                <h3>Síguenos</h3>
+
+                <p>
+                    <a href="https://www.facebook.com"
+                       target="_blank">
+                        Facebook
+                    </a>
+                </p>
+
+                <p>
+                    <a href="https://www.instagram.com"
+                       target="_blank">
+                        Instagram
+                    </a>
+                </p>
+
+                <p>
+                    <a href="https://www.tiktok.com"
+                       target="_blank">
+                        TikTok
+                    </a>
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="footer-abajo">
+
+            <p>© 2026 Tienda DIANA'S</p>
+
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

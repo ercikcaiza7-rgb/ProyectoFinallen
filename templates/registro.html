@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+
+    <link rel="stylesheet"
+          th:href="@{/estilos.css}">
+</head>
+
+<body class="register-body">
+
+<div class="pantalla-dividida">
+
+    <!-- LADO IZQUIERDO -->
+    <div class="lado-login">
+
+        <div class="form-container">
+
+            <h2>Crear Cuenta</h2>
+
+            <form th:action="@{/registro}"
+                  method="post"
+                  th:object="${usuario}">
+
+                <div class="form-group">
+
+                    <label>Nombre</label>
+
+                    <input type="text"
+                           th:field="*{nombre}"
+                           placeholder="Ingrese su nombre"
+                           required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Correo</label>
+
+                    <input type="email"
+                           th:field="*{correo}"
+                           placeholder="Ingrese su correo"
+                           required>
+
+                </div>
+
+                <div class="form-group">
+
+                    <label>Contraseña</label>
+
+                    <input type="password"
+                           th:field="*{password}"
+                           placeholder="Ingrese su contraseña"
+                           minlength="6"
+                           required>
+
+                    <small>
+                        La contraseña debe tener mínimo 6 caracteres.
+                    </small>
+
+                </div>
+
+                <div th:if="${errorCorreo}"
+                     class="mensaje-error">
+
+                    <p th:text="${errorCorreo}"></p>
+
+                </div>
+
+                <button type="submit"
+                        class="btn-form">
+
+                    Registrarse
+
+                </button>
+
+            </form>
+
+            <div class="link-form">
+
+                <p>¿Ya tienes cuenta?</p>
+
+                <a th:href="@{/login}">
+                    Iniciar sesión
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- LADO DERECHO -->
+    <div class="lado-imagen"></div>
+
+</div>
+
+<a th:href="@{/}" class="cerrar-formulario">
+    ✖
+</a>
+
+</body>
+</html>
